@@ -1,5 +1,46 @@
 {
   "user":[
 
+  ],
+  "parkings": [
+    {
+      "id": 1,
+      "name": "Parking jockey",
+      "location": "Av.Javier Prado",
+      "hoursOfAttention": "9:00-24:00",
+      "costHours": 3
+    },
+    {
+      "id": 2,
+      "name": "Parking Mega plaza",
+      "location": "Av.via expresa",
+      "hoursOfAttention": "9:00-24:00",
+      "costHours": 3
+
+    },
+    {
+      "id": 3,
+      "name": "Mall de sur",
+      "location": "Carretera central km 23",
+      "hoursOfAttention": "9:00-24:00",
+      "costHours": 3
+
+    },
+    {
+      "id": 4,
+      "name": "Mall santa anita",
+      "location": "Av.Carretera Central km 13",
+      "hoursOfAttention": "9:00-24:00",
+      "costHours": 5
+
+    },
+    {
+      "id": 5,
+      "name": "Rambla",
+      "location": "Av.Javier Prado",
+      "hoursOfAttention": "9:00-24:00",
+      "costHours": 2
+
+    }
   ]
 }
