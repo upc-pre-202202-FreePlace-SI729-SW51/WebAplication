@@ -24,6 +24,9 @@ import {ParkingSlipComponent} from "./booking/pages/parking-slip/parking-slip.co
 import {HistoryComponent} from "./booking/pages/history/history.component";
 import {ParkingLotComponent} from "./parkingLot/pages/parking-lot/parking-lot.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatSelectModule} from "@angular/material/select";
+
 
 @NgModule({
   declarations: [
@@ -53,6 +56,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     MatCardModule,
     MatGridListModule,
     MatDividerModule,
+    MatStepperModule,
+    MatSelectModule,
     MatSidenavModule
   ],
   providers: [],
