@@ -1,1 +1,111 @@
-<p>reservation works!</p>
+<mat-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Information Parking</ng-template>
+            <div class="information-parking">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="firstCtrl" placeholder="Last name, First name">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Localization</mat-label>
+                    <input matInput formControlName="firstCtrl" placeholder="Last name, First name">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Cost Hours</mat-label>
+                    <input matInput formControlName="firstCtrl" placeholder="Last name, First name">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Spaces</mat-label>
+                    <input matInput formControlName="firstCtrl" placeholder="Last name, First name">
+                </mat-form-field>
+            </div>
+            <div class="button-step">
+                <button class="button-payment" mat-raised-button color="primary" matStepperNext>CONTINUE</button>
+                <button class="button-payment" mat-stroked-button (click)="navigateToParkingLots()" color="warn">BACK</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Reservation</ng-template>
+            <div class="add-information">
+                <mat-form-field appearance="outline">
+                    <mat-label>Full Name</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="Marina Velez Perez"
+                           required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Birth Day</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="17/02/1993"
+                           required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Your Hours</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="2,3,4,5"
+                           required>
+                </mat-form-field>
+            </div>
+            <div class="button-step">
+                <button class="button-payment" mat-raised-button color="primary" matStepperNext>CONTINUE</button>
+                <button class="button-payment" mat-stroked-button matStepperPrevious color="warn">Back</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Payment</ng-template>
+        <div class="total">
+            <mat-form-field appearance="outline">
+                <mat-label class="total-text">Total Payment: </mat-label>
+                <input matInput placeholder="3412123412341234" required>
+            </mat-form-field>
+        </div>
+        <div class="payment-Type">
+            <div class="payment-card">
+                <mat-form-field appearance="outline">
+                    <mat-label>Credit Card Type</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let card of card" [value]="card.value">
+                            {{card.type}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Number Credit Card</mat-label>
+                    <input matInput placeholder="3412123412341234"
+                           required>
+                </mat-form-field>
+                <div class="information-creditCard">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Expiration Date</mat-label>
+                        <input matInput placeholder="11/23" required>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>CVI</mat-label>
+                        <input matInput placeholder="092" required>
+                    </mat-form-field>
+                </div>
+                <button mat-raised-button color="primary">Payment</button>
+            </div>
+            <div class="payment-others">
+                <mat-form-field appearance="outline">
+                    <mat-label>PayPal</mat-label>
+                    <input matInput placeholder="092" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Pay Online</mat-label>
+                    <input matInput placeholder="092" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Cash Payment</mat-label>
+                    <input matInput placeholder="092" required>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="button-step">
+            <button class="button-payment" mat-raised-button color="primary">DONE</button>
+            <button class="button-payment" mat-stroked-button matStepperPrevious color="warn">BACK</button>
+        </div>
+    </mat-step>
+</mat-stepper>
