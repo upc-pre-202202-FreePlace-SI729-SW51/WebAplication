@@ -7,7 +7,7 @@ import {catchError, Observable, retry, throwError} from "rxjs";
 })
 export class HistoryService {
 
-  basePath = ' http://localhost:3000/api/v1/History';
+  basePath = 'https://fake-api-freeplace.herokuapp.com/history';
 
   httpOptions = {
     headers: new HttpHeaders({
