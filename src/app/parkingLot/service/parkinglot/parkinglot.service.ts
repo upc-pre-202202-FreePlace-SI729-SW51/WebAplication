@@ -8,7 +8,7 @@ import {Parkinglot} from "../../model/parkinglot";
 })
 export class ParkinglotService {
 
-  basePath = 'https://fake-api-freeplace.herokuapp.com/parkings';
+  basePath = ' http://localhost:3000/api/v1/parkings';
 
   httpOptions = {
     headers: new HttpHeaders({
