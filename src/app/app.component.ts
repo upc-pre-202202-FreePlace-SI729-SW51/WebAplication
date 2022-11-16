@@ -8,7 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'FreePlace-Application-Web';
   options = [
-    { path: '/parking-lots', title: ''},
-    { path: '/reservation-history', title: 'Reservation History'}
   ]
 }

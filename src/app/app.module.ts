@@ -18,11 +18,6 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
 import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
-import {DriverComponent} from "./profile/pages/driver/driver.component";
-import {ReservationComponent} from "./booking/pages/reservation/reservation.component";
-import {ParkingSlipComponent} from "./booking/pages/parking-slip/parking-slip.component";
-import {HistoryComponent} from "./booking/pages/history/history.component";
-import {ParkingLotComponent} from "./parkingLot/pages/parking-lot/parking-lot.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatSelectModule} from "@angular/material/select";
@@ -31,12 +26,7 @@ import {MatSelectModule} from "@angular/material/select";
 @NgModule({
   declarations: [
     AppComponent,
-    DriverComponent,
-    ParkingLotComponent,
-    ReservationComponent,
-    ParkingSlipComponent,
-    PageNotFoundComponent,
-    HistoryComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
