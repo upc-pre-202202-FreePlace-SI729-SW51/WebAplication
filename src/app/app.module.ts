@@ -21,12 +21,14 @@ import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-fo
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatSelectModule} from "@angular/material/select";
+import { ParkingLotComponent } from './parkingLot/pages/parking-lot/parking-lot.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ParkingLotComponent
   ],
   imports: [
     BrowserModule,
