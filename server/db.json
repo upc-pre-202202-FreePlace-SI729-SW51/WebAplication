@@ -1,58 +1,319 @@
 {
-  "user":[
-
-  ],
-  "parkings": [
+  "owner": [
     {
       "id": 1,
-      "name": "Parking jockey",
-      "location": "Av.Javier Prado",
-      "hoursOfAttention": "9:00-24:00",
-      "costHours": 3
+      "nameCompany": "The Thosrpark",
+      "address": "Av.Javier Prado",
+      "description": "El mejor parking de la ciudad",
+      "contact": "983412344",
+      "ownerType": "private"
     },
     {
       "id": 2,
-      "name": "Parking Mega plaza",
-      "location": "Av.via expresa",
-      "hoursOfAttention": "9:00-24:00",
-      "costHours": 3
-
+      "nameCompany": "Plaza Lots",
+      "address": "Av.Primavera",
+      "description": "El mejor parking de todo surco",
+      "contact": "983991203",
+      "ownerType": "private"
     },
     {
       "id": 3,
-      "name": "Mall de sur",
-      "location": "Carretera central km 23",
-      "hoursOfAttention": "9:00-24:00",
-      "costHours": 3
-
+      "nameCompany": "The dragon parking",
+      "address": "Av.Encalada",
+      "description": "El mejor parking",
+      "contact": "945673345",
+      "ownerType": "private"
     },
     {
       "id": 4,
-      "name": "Mall santa anita",
-      "location": "Av.Carretera Central km 13",
-      "hoursOfAttention": "9:00-24:00",
-      "costHours": 5
-
+      "nameCompany": "Parking Flag",
+      "address": "Av.Marina",
+      "description": "El mejor parking de la ciudad",
+      "contact": "943382346",
+      "ownerType": "public"
     },
     {
       "id": 5,
-      "name": "Rambla",
-      "location": "Av.Javier Prado",
-      "hoursOfAttention": "9:00-24:00",
-      "costHours": 2
-
+      "nameCompany": "Drivers Sleep",
+      "address": "Av.Lomas Lugubres",
+      "description": "El mejor parking de la ciudad",
+      "contact": "993454343",
+      "ownerType": "public"
+    },
+    {
+      "id": 6,
+      "nameCompany": "Take care Driver",
+      "address": "Av.Angamos",
+      "description": "El mejor del distrito",
+      "contact": "993456782",
+      "ownerType": "public"
     }
   ],
-  "History": [
+  "parkingLots": [
     {
       "id": 1,
-      "Reservation_id": 1,
-      "Name": "Eclair",
-      "NameOfParking": "262",
-      "Location": "16",
-      "HoursOfState": 23,
-      "CostHours": 6,
-      "Total": 6
+      "ownerId": 1,
+      "spaceAvailable": 345,
+      "spaceFree": 150,
+      "cost": 45
+    },
+    {
+      "id": 2,
+      "ownerId": 4,
+      "spaceAvailable": 5,
+      "spaceFree": 2,
+      "cost": 5
+    },
+    {
+      "id": 3,
+      "ownerId": 2,
+      "spaceAvailable": 400,
+      "spaceFree": 250,
+      "cost": 90
+    },
+    {
+      "id": 4,
+      "ownerId": 5,
+      "spaceAvailable": 10,
+      "spaceFree": 6,
+      "cost": 9
+    },
+    {
+      "id": 5,
+      "ownerId": 3,
+      "spaceAvailable": 245,
+      "spaceFree": 105,
+      "cost": 20
+    },
+    {
+      "id": 6,
+      "ownerId": 6,
+      "spaceAvailable": 7,
+      "spaceFree": 4,
+      "cost": 5
     }
+  ],
+  "creditCard": [
+    {
+      "id": 1,
+      "type": "VISA",
+      "cardNumber": "4820870003646581",
+      "dateExpiration": "07/2025",
+      "cvi": "324"
+    },
+    {
+      "id": 2,
+      "type": "VISA",
+      "cardNumber": "4140857815562141",
+      "dateExpiration": "01/2026",
+      "cvi": "336"
+    },
+    {
+      "id": 3,
+      "type": "VISA",
+      "cardNumber": "4305846357705243",
+      "dateExpiration": "07/2027",
+      "cvi": "111"
+    },
+    {
+      "id": 4,
+      "type": "MaterCard",
+      "cardNumber": "5560258515225345",
+      "dateExpiration": "05/2026",
+      "cvi": "973"
+    },
+    {
+      "id": 5,
+      "type": "MaterCard",
+      "cardNumber": "5418262611773723",
+      "dateExpiration": "08/2024",
+      "cvi": "414"
+    },
+    {
+      "id": 6,
+      "type": "MaterCard",
+      "cardNumber": "5488921553488559",
+      "dateExpiration": "12/2025",
+      "cvi": "357"
+    }
+  ],
+  "drivers":[
+    {
+      "id": 1,
+      "creditCardId": 1,
+      "fullName": "Frank Huarcaya",
+      "contact": "987456321",
+      "vehicleNumber": "B6T05"
+    },
+    {
+      "id": 2,
+      "creditCardId": 4,
+      "fullName": "Jose Fabricio Jared",
+      "contact": "987623112",
+      "vehicleNumber": "A83T9"
+    },
+    {
+      "id": 3,
+      "creditCardId": 2,
+      "fullName": "Damian Thom",
+      "contact": "934566721",
+      "vehicleNumber": "H67T3"
+    },
+    {
+      "id": 4,
+      "creditCardId": 5,
+      "fullName": "Luis Martinez",
+      "contact": "932646389",
+      "vehicleNumber": "F9L31"
+    },
+    {
+      "id": 5,
+      "creditCardId": 3,
+      "fullName": "Samuel De Luque",
+      "contact": "956433367",
+      "vehicleNumber": "M5L74"
+    },
+    {
+      "id": 6,
+      "creditCardId": 6,
+      "fullName": "David Alonso",
+      "contact": "976646321",
+      "vehicleNumber": "L9H3J"
+    }
+  ],
+  "reservations": [
+    {
+      "id": 1,
+      "driverId": 1,
+      "parkingLotId": 6,
+      "durationMinutes": "00:30:00",
+      "bookingDate": "2022-04-23",
+      "startTime": "10:30:00"
+    },
+    {
+      "id": 2,
+      "driverId": 4,
+      "parkingLotId": 3,
+      "durationMinutes": "00:40:00",
+      "bookingDate": "2022-05-13",
+      "startTime": "11:00:00"
+    },
+    {
+      "id": 3,
+      "driverId": 2,
+      "parkingLotId": 5,
+      "durationMinutes": "01:10:00",
+      "bookingDate": "2022-07-23",
+      "startTime": "14:15:00"
+    },
+    {
+      "id": 4,
+      "driverId": 5,
+      "parkingLotId": 2,
+      "durationMinutes": "00:30:00",
+      "bookingDate": "2022-08-01",
+      "startTime": "18:30:00"
+    },
+    {
+      "id": 5,
+      "driverId": 3,
+      "parkingLotId": 4,
+      "durationMinutes": "02:30:00",
+      "bookingDate": "2022-10-20",
+      "startTime": "11:30:00"
+    },
+    {
+      "id": 6,
+      "driverId": 6,
+      "parkingLotId": 1,
+      "durationMinutes": "01:10:00",
+      "bookingDate": "2022-02-23",
+      "startTime": "15:15:00"
+    }
+  ],
+  "parkingSlip": [
+    {
+      "id": 1,
+      "reservationId": 6,
+      "entryTime": "15:00:00",
+      "exitTime": "16:30:00",
+      "totalCost": 34
+    },
+    {
+      "id": 2,
+      "reservationId": 3,
+      "entryTime": "14:00:00",
+      "exitTime": "15:30:00",
+      "totalCost": 34
+    },
+    {
+      "id": 3,
+      "reservationId": 5,
+      "entryTime": "11:00:00",
+      "exitTime": "14:15:00",
+      "totalCost": 34
+    },
+    {
+      "id": 4,
+      "reservationId": 2,
+      "entryTime": "10:45:00",
+      "exitTime": "12:10:00",
+      "totalCost": 34
+    },
+    {
+      "id": 5,
+      "reservationId": 4,
+      "entryTime": "18:15:00",
+      "exitTime": "19:00:00",
+      "totalCost": 34
+    },
+    {
+      "id": 6,
+      "reservationId": 1,
+      "entryTime": "10:10:00",
+      "exitTime": "10:50:00",
+      "totalCost": 34
+    }
+  ],
+  "reviews":[
+    {
+      "id": 1,
+      "reservationId": 6,
+      "comment": "Muy buen parking",
+      "starts": 5
+    },
+    {
+      "id": 2,
+      "reservationId": 3,
+      "comment": "Buen parking",
+      "starts": 4
+    },
+    {
+      "id": 3,
+      "reservationId": 5,
+      "comment": "Muy buen parking",
+      "starts": 5
+    },
+    {
+      "id": 4,
+      "reservationId": 2,
+      "comment": "Muy buen parking",
+      "starts": 5
+    },
+    {
+      "id": 5,
+      "reservationId": 4,
+      "comment": "Buen parking",
+      "starts": 3
+    },
+    {
+      "id": 6,
+      "reservationId": 1,
+      "comment": "Buen parking",
+      "starts": 4
+    }
+  ],
+  "user": [
+
   ]
 }
