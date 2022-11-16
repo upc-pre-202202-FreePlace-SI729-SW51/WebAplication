@@ -22,13 +22,15 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatSelectModule} from "@angular/material/select";
 import { ParkingLotComponent } from './parkingLot/pages/parking-lot/parking-lot.component';
+import { OwnerComponent } from './parkingLot/pages/owner/owner/owner.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    ParkingLotComponent
+    ParkingLotComponent,
+    OwnerComponent
   ],
   imports: [
     BrowserModule,
