@@ -1,28 +1,28 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Owner} from "../../model/owner/owner";
+import {Reservation} from "../../model/reservation";
 import {MatTableDataSource} from "@angular/material/table";
 import {NgForm} from "@angular/forms";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {OwnerService} from "../../services/owner/owner.service";
+import {ReservationService} from "../../services/reservation.service";
 import * as _ from "lodash";
-import {ParkingLotService} from "../../services/parkingLot/parking-lot.service";
-import {ParkingLot} from "../../model/ParkingLot/parking-lot";
+import {ParkingSlips} from "../../model/parking-slips";
+import {ParkingSlipsService} from "../../services/parking-slips.service";
 
 @Component({
-  selector: 'app-parking-lot',
-  templateUrl: './parking-lot.component.html',
-  styleUrls: ['./parking-lot.component.css']
+  selector: 'app-parking-slips',
+  templateUrl: './parking-slips.component.html',
+  styleUrls: ['./parking-slips.component.css']
 })
-export class ParkingLotComponent implements OnInit {
+export class ParkingSlipsComponent implements OnInit {
 
 
-  parkingLotData: ParkingLot;
+  parkingSlipsData: ParkingSlips;
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['id', 'ownersId', 'spaceAvailable', 'spaceFree','cost', 'actions'];
+  displayedColumns: string[] = ['id', 'reservationId', 'entryTime', 'exitTime','totalCost', 'actions'];
 
-  @ViewChild('parkingLotForm', {static: false})
-  parkingLotForm!: NgForm;
+  @ViewChild('parkingSlipsForm', {static: false})
+  parkingSlipsForm!: NgForm;
 
   @ViewChild(MatPaginator, {static: false})
   paginator!: MatPaginator;
@@ -32,57 +32,57 @@ export class ParkingLotComponent implements OnInit {
 
   isEditMode = false;
 
-  constructor(private parkingLotService: ParkingLotService) {
-    this.parkingLotData = {} as ParkingLot;
+  constructor(private parkingSlipsService: ParkingSlipsService) {
+    this.parkingSlipsData = {} as ParkingSlips;
     this.dataSource = new MatTableDataSource<any>();
   }
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
-    this.getAllparkingLot();
+    this.getAllParkingSlips();
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
   }
 
-  getAllparkingLot() {
-    this.parkingLotService.getAll().subscribe((response: any) => {
+  getAllParkingSlips() {
+    this.parkingSlipsService.getAll().subscribe((response: any) => {
       this.dataSource.data = response;
     });
   }
 
-  editItem(element: ParkingLot) {
-    this.parkingLotData = _.cloneDeep(element);
+  editItem(element: ParkingSlips) {
+    this.parkingSlipsData = _.cloneDeep(element);
     this.isEditMode = true;
   }
 
   cancelEdit() {
     this.isEditMode = false;
-    this.parkingLotForm.resetForm();
+    this.parkingSlipsForm.resetForm();
   }
 
   deleteItem(id: number) {
-    this.parkingLotService.delete(id).subscribe(() => {
+    this.parkingSlipsService.delete(id).subscribe(() => {
       this.dataSource.data = this.dataSource.data
-        .filter((o: Owner) => { return o.id !== id ? o : false; });
+        .filter((o: ParkingSlips) => { return o.id !== id ? o : false; });
     });
     console.log(this.dataSource.data);
   }
 
-  addParkingLot() {
-    this.parkingLotData.id = 0;
-    this.parkingLotService.create(this.parkingLotData).subscribe((response: any) => {
+  addParkingSlips() {
+    this.parkingSlipsData.id = 0;
+    this.parkingSlipsService.create(this.parkingSlipsData).subscribe((response: any) => {
       this.dataSource.data.push({...response});
       this.dataSource.data = this.dataSource.data.map((o: any) => { return o});
     });
   }
 
-  updateParkingLot() {
-    this.parkingLotService.update(this.parkingLotData.id, this.parkingLotData)
+  updateParkingSlips() {
+    this.parkingSlipsService.update(this.parkingSlipsData.id, this.parkingSlipsData)
       .subscribe((response: any) => {
         this.dataSource.data = this.dataSource.data
-          .map((o: ParkingLot) => {
+          .map((o: ParkingSlips) => {
             if (o.id === response.id) {
               o = response;
             }
@@ -92,19 +92,20 @@ export class ParkingLotComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.parkingLotForm.form.valid) {
+    if (this.parkingSlipsForm.form.valid) {
       console.log('valid');
       if (this.isEditMode) {
         console.log(' about to update');
-        this.updateParkingLot();
+        this.updateParkingSlips();
       } else {
         console.log('about to add');
-        this.addParkingLot();
+        this.addParkingSlips();
       }
       this.cancelEdit();
     } else {
       console.log('Invalid data');
     }
   }
+
 
 }

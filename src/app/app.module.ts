@@ -22,7 +22,12 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatSelectModule} from "@angular/material/select";
 import { ParkingLotComponent } from './parkingLot/pages/parking-lot/parking-lot.component';
-import { OwnerComponent } from './parkingLot/pages/owner/owner/owner.component';
+import {OwnerComponent} from "./parkingLot/pages/owner/owner.component";
+import {OwnerService} from "./parkingLot/services/owner/owner.service";
+import { CreditCardComponent } from './profile/pages/credit-card/credit-card.component';
+import { DriverComponent } from './profile/pages/driver/driver.component';
+import { ReservationComponent } from './booking/pages/reservation/reservation.component';
+import { ParkingSlipsComponent } from './booking/pages/parking-slips/parking-slips.component';
 
 
 @NgModule({
@@ -30,7 +35,11 @@ import { OwnerComponent } from './parkingLot/pages/owner/owner/owner.component';
     AppComponent,
     PageNotFoundComponent,
     ParkingLotComponent,
-    OwnerComponent
+    OwnerComponent,
+    CreditCardComponent,
+    DriverComponent,
+    ReservationComponent,
+    ParkingSlipsComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +63,7 @@ import { OwnerComponent } from './parkingLot/pages/owner/owner/owner.component';
     MatSelectModule,
     MatSidenavModule
   ],
-  providers: [],
+  providers: [OwnerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

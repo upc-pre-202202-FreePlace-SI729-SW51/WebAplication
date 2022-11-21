@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
-import {Owner} from "../../model/owner/owner";
+import {ParkingLot} from "../../parkingLot/model/ParkingLot/parking-lot";
+import {Reservation} from "../model/reservation";
 
+@Injectable({
+  providedIn: 'root'
+})
+export class ReservationService {
 
-@Injectable(
- {providedIn: 'root'}
-)
-export class OwnerService {
-
-  basePath = 'http://localhost:3000/owner';
+  basePath = 'http://localhost:3000/reservations';
 
   // Common options
   httpOptions = {
@@ -33,8 +33,8 @@ export class OwnerService {
   }
 
   // Create Student
-  create(item: any): Observable<Owner> {
-    return this.http.post<Owner>(
+  create(item: any): Observable<Reservation> {
+    return this.http.post<Reservation>(
       this.basePath,
       JSON.stringify(item),
       this.httpOptions)
@@ -44,8 +44,8 @@ export class OwnerService {
   }
 
   // Get Student by id
-  getById(id: any): Observable<Owner> {
-    return this.http.get<Owner>(
+  getById(id: any): Observable<Reservation> {
+    return this.http.get<Reservation>(
       `${this.basePath}/${id}`,
       this.httpOptions)
       .pipe(
@@ -54,8 +54,8 @@ export class OwnerService {
   }
 
   // Get All Students
-  getAll(): Observable<Owner> {
-    return this.http.get<Owner>(this.basePath, this.httpOptions)
+  getAll(): Observable<Reservation> {
+    return this.http.get<Reservation>(this.basePath, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -66,8 +66,8 @@ export class OwnerService {
   }
 
   // Update Student
-  update(id: any, item: any): Observable<Owner> {
-    return this.http.put<Owner>(`${this.basePath}/${id}`,
+  update(id: any, item: any): Observable<Reservation> {
+    return this.http.put<Reservation>(`${this.basePath}/${id}`,
       JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }

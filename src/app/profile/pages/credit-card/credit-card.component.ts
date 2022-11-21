@@ -1,27 +1,28 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import * as _ from 'lodash';
-
-import {OwnerService} from "../../services/owner/owner.service";
-import {Owner} from "../../model/owner/owner";
-import * as Console from "console";
+import {ParkingLot} from "../../../parkingLot/model/ParkingLot/parking-lot";
 import {MatTableDataSource} from "@angular/material/table";
 import {NgForm} from "@angular/forms";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {ParkingLotService} from "../../../parkingLot/services/parkingLot/parking-lot.service";
+import * as _ from "lodash";
+import {Owner} from "../../../parkingLot/model/owner/owner";
+import {CreditCard} from "../../model/credit-card";
+import {CreditCardService} from "../../services/credit-card.service";
 
 @Component({
-  selector: 'app-owner',
-  templateUrl: './owner.component.html',
-  styleUrls: ['./owner.component.css']
+  selector: 'app-credit-card',
+  templateUrl: './credit-card.component.html',
+  styleUrls: ['./credit-card.component.css']
 })
-export class OwnerComponent implements OnInit {
+export class CreditCardComponent implements OnInit {
 
-  ownerData: Owner;
+  creditCardData: CreditCard;
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['id', 'nameCompany', 'address', 'description','contact','ownerType', 'actions'];
+  displayedColumns: string[] = ['id', 'type', 'number', 'dateExpiration','cvi', 'actions'];
 
-  @ViewChild('ownerForm', {static: false})
-  ownerForm!: NgForm;
+  @ViewChild('creditCardForm', {static: false})
+  creditCardForm!: NgForm;
 
   @ViewChild(MatPaginator, {static: false})
   paginator!: MatPaginator;
@@ -31,57 +32,57 @@ export class OwnerComponent implements OnInit {
 
   isEditMode = false;
 
-  constructor(private ownerService: OwnerService) {
-    this.ownerData = {} as Owner;
+  constructor(private creditCardService: CreditCardService) {
+    this.creditCardData = {} as CreditCard;
     this.dataSource = new MatTableDataSource<any>();
   }
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
-    this.getAllOwner();
+    this.getAllCreditCard();
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
   }
 
-  getAllOwner() {
-    this.ownerService.getAll().subscribe((response: any) => {
+  getAllCreditCard() {
+    this.creditCardService.getAll().subscribe((response: any) => {
       this.dataSource.data = response;
     });
   }
 
-  editItem(element: Owner) {
-    this.ownerData = _.cloneDeep(element);
+  editItem(element: CreditCard) {
+    this.creditCardData = _.cloneDeep(element);
     this.isEditMode = true;
   }
 
   cancelEdit() {
     this.isEditMode = false;
-    this.ownerForm.resetForm();
+    this.creditCardForm.resetForm();
   }
 
   deleteItem(id: number) {
-    this.ownerService.delete(id).subscribe(() => {
+    this.creditCardService.delete(id).subscribe(() => {
       this.dataSource.data = this.dataSource.data
         .filter((o: Owner) => { return o.id !== id ? o : false; });
     });
     console.log(this.dataSource.data);
   }
 
-  addOwner() {
-    this.ownerData.id = 0;
-    this.ownerService.create(this.ownerData).subscribe((response: any) => {
+  addCreditCard() {
+    this.creditCardData.id = 0;
+    this.creditCardService.create(this.creditCardData).subscribe((response: any) => {
       this.dataSource.data.push({...response});
       this.dataSource.data = this.dataSource.data.map((o: any) => { return o});
     });
   }
 
-  updateOwner() {
-    this.ownerService.update(this.ownerData.id, this.ownerData)
+  updateCreditCard() {
+    this.creditCardService.update(this.creditCardData.id, this.creditCardData)
       .subscribe((response: any) => {
         this.dataSource.data = this.dataSource.data
-          .map((o: Owner) => {
+          .map((o: CreditCard) => {
             if (o.id === response.id) {
               o = response;
             }
@@ -91,14 +92,14 @@ export class OwnerComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.ownerForm.form.valid) {
+    if (this.creditCardForm.form.valid) {
       console.log('valid');
       if (this.isEditMode) {
         console.log(' about to update');
-        this.updateOwner();
+        this.updateCreditCard();
       } else {
         console.log('about to add');
-        this.addOwner();
+        this.addCreditCard();
       }
       this.cancelEdit();
     } else {

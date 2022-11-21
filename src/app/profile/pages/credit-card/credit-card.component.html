@@ -1,22 +1,22 @@
 <div class="table-wrapper">
-  <h1>parking lot Catalogue</h1>
-  <h2>{{ isEditMode ? 'Edit parking lot' : 'Add new parking lot' }}</h2>
-  <form (submit)="onSubmit()" #parkingLotForm='ngForm'>
+  <h1>credit card Catalogue</h1>
+  <h2>{{ isEditMode ? 'Edit credit card' : 'Add new credit card' }}</h2>
+  <form (submit)="onSubmit()" #creditCardForm='ngForm'>
     <mat-form-field>
-      <input matInput placeholder="ownersId" name="ownersId"
-             required [(ngModel)]="parkingLotData.ownersId">
+      <input matInput placeholder="type" name="type"
+             required [(ngModel)]="creditCardData.type">
     </mat-form-field>
     <mat-form-field>
-      <input  matInput placeholder="spaceAvailable" name="spaceAvailable"
-              required [(ngModel)]="parkingLotData.spaceAvailable">
+      <input  matInput placeholder="number" name="number"
+              required [(ngModel)]="creditCardData.number">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="spaceFree" name="spaceFree"
-             required [(ngModel)]="parkingLotData.spaceFree">
+      <input matInput placeholder="dateExpiration" name="dateExpiration"
+             required [(ngModel)]="creditCardData.dateExpiration">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="cost" name="cost"
-             required [(ngModel)]="parkingLotData.cost">
+      <input matInput placeholder="cvi" name="cvi"
+             required [(ngModel)]="creditCardData.cvi">
     </mat-form-field>
 
     <ng-container *ngIf="isEditMode; else elseTemplate">
@@ -33,21 +33,21 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> #Id</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
-    <ng-container matColumnDef="ownersId">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ownersId</th>
-      <td mat-cell *matCellDef="let element">{{ element.ownersId }}</td>
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> type</th>
+      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
     </ng-container>
-    <ng-container matColumnDef="spaceAvailable">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> spaceAvailable</th>
-      <td mat-cell *matCellDef="let element">{{ element.spaceAvailable }}</td>
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> number</th>
+      <td mat-cell *matCellDef="let element">{{ element.number }}</td>
     </ng-container>
-    <ng-container matColumnDef="spaceFree">
-      <th mat-header-cell *matHeaderCellDef> spaceFree</th>
-      <td mat-cell *matCellDef="let element">{{ element.spaceFree }}</td>
+    <ng-container matColumnDef="dateExpiration">
+      <th mat-header-cell *matHeaderCellDef> dateExpiration</th>
+      <td mat-cell *matCellDef="let element">{{ element.dateExpiration }}</td>
     </ng-container>
-    <ng-container matColumnDef="cost">
-      <th mat-header-cell *matHeaderCellDef> cost</th>
-      <td mat-cell *matCellDef="let element">{{ element.cost }}</td>
+    <ng-container matColumnDef="cvi">
+      <th mat-header-cell *matHeaderCellDef> cvi</th>
+      <td mat-cell *matCellDef="let element">{{ element.cvi }}</td>
     </ng-container>
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions</th>
@@ -58,7 +58,7 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"
-        [ngClass]="{'editable-row': parkingLotData.id === row.id}"></tr>
+        [ngClass]="{'editable-row': creditCardData.id === row.id}"></tr>
   </table>
 
 

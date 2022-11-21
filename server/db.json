@@ -186,49 +186,43 @@
       "id": 1,
       "driverId": 1,
       "parkingLotId": 6,
-      "durationMinutes": "00:30:00",
-      "bookingDate": "2022-04-23",
-      "startTime": "10:30:00"
+      "durationTime": "00:30:00",
+      "dateBooking": "2022-04-23"
     },
     {
       "id": 2,
       "driverId": 4,
       "parkingLotId": 3,
-      "durationMinutes": "00:40:00",
-      "bookingDate": "2022-05-13",
-      "startTime": "11:00:00"
+      "durationTime": "00:40:00",
+      "dateBooking": "2022-05-13"
     },
     {
       "id": 3,
       "driverId": 2,
       "parkingLotId": 5,
-      "durationMinutes": "01:10:00",
-      "bookingDate": "2022-07-23",
-      "startTime": "14:15:00"
+      "durationTime": "01:10:00",
+      "dateBooking": "2022-07-23"
     },
     {
       "id": 4,
       "driverId": 5,
       "parkingLotId": 2,
-      "durationMinutes": "00:30:00",
-      "bookingDate": "2022-08-01",
-      "startTime": "18:30:00"
+      "durationTime": "00:30:00",
+      "dateBooking": "2022-08-01"
     },
     {
       "id": 5,
       "driverId": 3,
       "parkingLotId": 4,
-      "durationMinutes": "02:30:00",
-      "bookingDate": "2022-10-20",
-      "startTime": "11:30:00"
+      "durationTime": "02:30:00",
+      "dateBooking": "2022-10-20"
     },
     {
       "id": 6,
       "driverId": 6,
       "parkingLotId": 1,
-      "durationMinutes": "01:10:00",
-      "bookingDate": "2022-02-23",
-      "startTime": "15:15:00"
+      "durationTime": "01:10:00",
+      "dateBooking": "2022-02-23"
     }
   ],
   "parkingSlip": [

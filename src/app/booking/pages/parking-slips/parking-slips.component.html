@@ -1,22 +1,22 @@
 <div class="table-wrapper">
-  <h1>parking lot Catalogue</h1>
-  <h2>{{ isEditMode ? 'Edit parking lot' : 'Add new parking lot' }}</h2>
-  <form (submit)="onSubmit()" #parkingLotForm='ngForm'>
+  <h1>parking slips Catalogue</h1>
+  <h2>{{ isEditMode ? 'Edit parkingSlips' : 'Add new parkingSlips' }}</h2>
+  <form (submit)="onSubmit()" #parkingSlipsForm='ngForm'>
     <mat-form-field>
-      <input matInput placeholder="ownersId" name="ownersId"
-             required [(ngModel)]="parkingLotData.ownersId">
+      <input matInput placeholder="reservationId" name="reservationId"
+             required [(ngModel)]="parkingSlipsData.reservationId">
     </mat-form-field>
     <mat-form-field>
-      <input  matInput placeholder="spaceAvailable" name="spaceAvailable"
-              required [(ngModel)]="parkingLotData.spaceAvailable">
+      <input  matInput placeholder="entryTime" name="entryTime"
+              required [(ngModel)]="parkingSlipsData.entryTime">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="spaceFree" name="spaceFree"
-             required [(ngModel)]="parkingLotData.spaceFree">
+      <input matInput placeholder="exitTime" name="exitTime"
+             required [(ngModel)]="parkingSlipsData.exitTime">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="cost" name="cost"
-             required [(ngModel)]="parkingLotData.cost">
+      <input matInput placeholder="totalCost" name="totalCost"
+             required [(ngModel)]="parkingSlipsData.totalCost">
     </mat-form-field>
 
     <ng-container *ngIf="isEditMode; else elseTemplate">
@@ -33,21 +33,21 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> #Id</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
-    <ng-container matColumnDef="ownersId">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ownersId</th>
-      <td mat-cell *matCellDef="let element">{{ element.ownersId }}</td>
+    <ng-container matColumnDef="driverId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> driverId</th>
+      <td mat-cell *matCellDef="let element">{{ element.reservationId }}</td>
     </ng-container>
-    <ng-container matColumnDef="spaceAvailable">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> spaceAvailable</th>
-      <td mat-cell *matCellDef="let element">{{ element.spaceAvailable }}</td>
+    <ng-container matColumnDef="parkingLotId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> parkingLotId</th>
+      <td mat-cell *matCellDef="let element">{{ element.entryTime }}</td>
     </ng-container>
-    <ng-container matColumnDef="spaceFree">
-      <th mat-header-cell *matHeaderCellDef> spaceFree</th>
-      <td mat-cell *matCellDef="let element">{{ element.spaceFree }}</td>
+    <ng-container matColumnDef="durationTime">
+      <th mat-header-cell *matHeaderCellDef> durationTime</th>
+      <td mat-cell *matCellDef="let element">{{ element.exitTime }}</td>
     </ng-container>
-    <ng-container matColumnDef="cost">
-      <th mat-header-cell *matHeaderCellDef> cost</th>
-      <td mat-cell *matCellDef="let element">{{ element.cost }}</td>
+    <ng-container matColumnDef="dateBooking">
+      <th mat-header-cell *matHeaderCellDef> dateBooking</th>
+      <td mat-cell *matCellDef="let element">{{ element.totalCost }}</td>
     </ng-container>
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions</th>
@@ -58,11 +58,10 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"
-        [ngClass]="{'editable-row': parkingLotData.id === row.id}"></tr>
+        [ngClass]="{'editable-row': parkingSlipsData.id === row.id}"></tr>
   </table>
 
 
   <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"
                  showFirstLastButtons></mat-paginator>
 </div>
-

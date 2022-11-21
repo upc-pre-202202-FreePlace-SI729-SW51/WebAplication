@@ -1,27 +1,24 @@
 <div class="table-wrapper">
-  <h1>owner Catalogue</h1>
-  <h2>{{ isEditMode ? 'Edit Owner' : 'Add new Owner' }}</h2>
-  <form (submit)="onSubmit()" #ownerForm='ngForm'>
+  <h1>driver Catalogue</h1>
+  <h2>{{ isEditMode ? 'Edit driver' : 'Add new driver' }}</h2>
+  <form (submit)="onSubmit()" #driverForm='ngForm'>
     <mat-form-field>
-      <input matInput placeholder="nameCompany" name="nameCompany"
-             required [(ngModel)]="ownerData.nameCompany">
+      <input matInput placeholder="creditCard" name="creditCard"
+             required [(ngModel)]="driverData.creditCard">
     </mat-form-field>
     <mat-form-field>
-      <input  matInput placeholder="address" name="address"
-             required [(ngModel)]="ownerData.address">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="description" name="description"
-             required [(ngModel)]="ownerData.description">
+      <input  matInput placeholder="fullName" name="fullName"
+              required [(ngModel)]="driverData.fullName">
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="contact" name="contact"
-             required [(ngModel)]="ownerData.contact">
+             required [(ngModel)]="driverData.contact">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="ownerType" name="ownerType"
-             required [(ngModel)]="ownerData.ownerType">
+      <input matInput placeholder="vehicle" name="vehicle"
+             required [(ngModel)]="driverData.vehicle">
     </mat-form-field>
+
     <ng-container *ngIf="isEditMode; else elseTemplate">
       <button mat-button color="primary">Update</button>
       <button mat-button color="warn" (click)="cancelEdit()">Cancel</button>
@@ -36,25 +33,21 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> #Id</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
-    <ng-container matColumnDef="nameCompany">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> nameCompany</th>
-      <td mat-cell *matCellDef="let element">{{ element.nameCompany }}</td>
+    <ng-container matColumnDef="creditCard">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> creditCard</th>
+      <td mat-cell *matCellDef="let element">{{ element.creditCard }}</td>
     </ng-container>
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> address</th>
-      <td mat-cell *matCellDef="let element">{{ element.address }}</td>
-    </ng-container>
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> description</th>
-      <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> fullName</th>
+      <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
     </ng-container>
     <ng-container matColumnDef="contact">
       <th mat-header-cell *matHeaderCellDef> contact</th>
       <td mat-cell *matCellDef="let element">{{ element.contact }}</td>
     </ng-container>
-    <ng-container matColumnDef="ownerType">
-      <th mat-header-cell *matHeaderCellDef> ownerType</th>
-      <td mat-cell *matCellDef="let element">{{ element.ownerType }}</td>
+    <ng-container matColumnDef="vehicle">
+      <th mat-header-cell *matHeaderCellDef> vehicle</th>
+      <td mat-cell *matCellDef="let element">{{ element.vehicle }}</td>
     </ng-container>
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions</th>
@@ -65,10 +58,11 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"
-        [ngClass]="{'editable-row': ownerData.id === row.id}"></tr>
+        [ngClass]="{'editable-row': driverData.id === row.id}"></tr>
   </table>
 
 
   <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"
                  showFirstLastButtons></mat-paginator>
 </div>
+

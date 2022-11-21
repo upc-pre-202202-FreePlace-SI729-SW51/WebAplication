@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
-import {Owner} from "../../model/owner/owner";
+import {CreditCard} from "../model/credit-card";
+import {Driver} from "../model/driver";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DriverService {
 
 
-@Injectable(
- {providedIn: 'root'}
-)
-export class OwnerService {
-
-  basePath = 'http://localhost:3000/owner';
+  basePath = 'http://localhost:3000/drivers';
 
   // Common options
   httpOptions = {
@@ -33,8 +34,8 @@ export class OwnerService {
   }
 
   // Create Student
-  create(item: any): Observable<Owner> {
-    return this.http.post<Owner>(
+  create(item: any): Observable<Driver> {
+    return this.http.post<Driver>(
       this.basePath,
       JSON.stringify(item),
       this.httpOptions)
@@ -44,8 +45,8 @@ export class OwnerService {
   }
 
   // Get Student by id
-  getById(id: any): Observable<Owner> {
-    return this.http.get<Owner>(
+  getById(id: any): Observable<Driver> {
+    return this.http.get<Driver>(
       `${this.basePath}/${id}`,
       this.httpOptions)
       .pipe(
@@ -54,8 +55,8 @@ export class OwnerService {
   }
 
   // Get All Students
-  getAll(): Observable<Owner> {
-    return this.http.get<Owner>(this.basePath, this.httpOptions)
+  getAll(): Observable<Driver> {
+    return this.http.get<Driver>(this.basePath, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -66,8 +67,8 @@ export class OwnerService {
   }
 
   // Update Student
-  update(id: any, item: any): Observable<Owner> {
-    return this.http.put<Owner>(`${this.basePath}/${id}`,
+  update(id: any, item: any): Observable<Driver> {
+    return this.http.put<Driver>(`${this.basePath}/${id}`,
       JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }

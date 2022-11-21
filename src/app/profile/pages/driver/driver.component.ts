@@ -1,27 +1,29 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import * as _ from 'lodash';
-
-import {OwnerService} from "../../services/owner/owner.service";
-import {Owner} from "../../model/owner/owner";
-import * as Console from "console";
+import {CreditCard} from "../../model/credit-card";
 import {MatTableDataSource} from "@angular/material/table";
 import {NgForm} from "@angular/forms";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {CreditCardService} from "../../services/credit-card.service";
+import * as _ from "lodash";
+import {Owner} from "../../../parkingLot/model/owner/owner";
+import {Driver} from "../../model/driver";
+import {DriverService} from "../../services/driver.service";
 
 @Component({
-  selector: 'app-owner',
-  templateUrl: './owner.component.html',
-  styleUrls: ['./owner.component.css']
+  selector: 'app-driver',
+  templateUrl: './driver.component.html',
+  styleUrls: ['./driver.component.css']
 })
-export class OwnerComponent implements OnInit {
+export class DriverComponent implements OnInit {
 
-  ownerData: Owner;
+
+  driverData: Driver;
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['id', 'nameCompany', 'address', 'description','contact','ownerType', 'actions'];
+  displayedColumns: string[] = ['id', 'creditCard', 'fullName', 'contact','vehicle', 'actions'];
 
-  @ViewChild('ownerForm', {static: false})
-  ownerForm!: NgForm;
+  @ViewChild('driverForm', {static: false})
+  driverForm!: NgForm;
 
   @ViewChild(MatPaginator, {static: false})
   paginator!: MatPaginator;
@@ -31,57 +33,57 @@ export class OwnerComponent implements OnInit {
 
   isEditMode = false;
 
-  constructor(private ownerService: OwnerService) {
-    this.ownerData = {} as Owner;
+  constructor(private driverService: DriverService) {
+    this.driverData = {} as Driver;
     this.dataSource = new MatTableDataSource<any>();
   }
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
-    this.getAllOwner();
+    this.getAllDriver();
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
   }
 
-  getAllOwner() {
-    this.ownerService.getAll().subscribe((response: any) => {
+  getAllDriver() {
+    this.driverService.getAll().subscribe((response: any) => {
       this.dataSource.data = response;
     });
   }
 
-  editItem(element: Owner) {
-    this.ownerData = _.cloneDeep(element);
+  editItem(element: Driver) {
+    this.driverData = _.cloneDeep(element);
     this.isEditMode = true;
   }
 
   cancelEdit() {
     this.isEditMode = false;
-    this.ownerForm.resetForm();
+    this.driverForm.resetForm();
   }
 
   deleteItem(id: number) {
-    this.ownerService.delete(id).subscribe(() => {
+    this.driverService.delete(id).subscribe(() => {
       this.dataSource.data = this.dataSource.data
-        .filter((o: Owner) => { return o.id !== id ? o : false; });
+        .filter((o: Driver) => { return o.id !== id ? o : false; });
     });
     console.log(this.dataSource.data);
   }
 
-  addOwner() {
-    this.ownerData.id = 0;
-    this.ownerService.create(this.ownerData).subscribe((response: any) => {
+  addDriver() {
+    this.driverData.id = 0;
+    this.driverService.create(this.driverData).subscribe((response: any) => {
       this.dataSource.data.push({...response});
       this.dataSource.data = this.dataSource.data.map((o: any) => { return o});
     });
   }
 
-  updateOwner() {
-    this.ownerService.update(this.ownerData.id, this.ownerData)
+  updateDriver() {
+    this.driverService.update(this.driverData.id, this.driverData)
       .subscribe((response: any) => {
         this.dataSource.data = this.dataSource.data
-          .map((o: Owner) => {
+          .map((o: CreditCard) => {
             if (o.id === response.id) {
               o = response;
             }
@@ -91,14 +93,14 @@ export class OwnerComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.ownerForm.form.valid) {
+    if (this.driverForm.form.valid) {
       console.log('valid');
       if (this.isEditMode) {
         console.log(' about to update');
-        this.updateOwner();
+        this.updateDriver();
       } else {
         console.log('about to add');
-        this.addOwner();
+        this.addDriver();
       }
       this.cancelEdit();
     } else {
